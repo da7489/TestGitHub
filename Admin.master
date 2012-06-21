@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin.master.cs" Inherits="Admin" %>
+
+<%@ Register src="HGLogon.ascx" tagname="HGLogon" tagprefix="uc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Administration</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+        <link id="Link1" rel="shortcut icon" type="image/x-icon" href="favicon.ico" runat="server" />
+        <link id="Link2" rel="icon" type="image/ico" href="favicon.ico" runat="server" />
+        <link type="image/vnd.microsoft.icon" href="images/logo.jpg" rel="shortcut icon" />
+        <link href="style/jquery.hoverscroll.css" type="text/css" rel="stylesheet" />
+        <link rel="Stylesheet" type="text/css" href="style/main.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.hoverscroll.js"></script>
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        #form1
+        {
+            height: 43px;
+            margin-left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <form id="adminForm" runat="server">
+    <table class="style5">
+        <tr>
+            <td class="style5">
+                <h2 class="style5">
+                Administration<br /></h2>
+                <div style="float:right; margin-right:auto; margin-top:auto;">
+                    Welcome back,
+                    <uc1:HGLogon ID="HGLogon2" runat="server" />
+                </div>
+            </td>
+        </tr>   
+        </table>   
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

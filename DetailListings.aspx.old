@@ -1,0 +1,208 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="DetailListings.aspx.cs" Inherits="DetailListings" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <div id="mySlideShow" align="left">
+        <script runat="server" type="text/C#">
+            /*
+             * We are writing our own GetSlide to use it in Slideshow Extender
+            */
+            //[System.Web.Services.WebServiceBinding]
+            [System.Web.Services.WebMethod]  
+            [System.Web.Script.Services.ScriptMethod]
+            public static AjaxControlToolkit.Slide[] GetSlides()
+            {
+                string imgName = "home1";
+                //Request.QueryString
+                return new AjaxControlToolkit.Slide[] { 
+                    new AjaxControlToolkit.Slide
+		                ("images/details/"+imgName+"/1.jpg", "Blue Hills", "Go Blue"),                    
+                        new AjaxControlToolkit.Slide
+                            ("images/details/home1/1.jpg", "main", "full house"),
+                        new AjaxControlToolkit.Slide("images/details/home1/2.jpg", "front", "Front"),
+                        new AjaxControlToolkit.Slide
+		                    ("images/details/home1/3.jpg", "side", "side"),
+                        new AjaxControlToolkit.Slide
+		                    ("images/details/home1/4.jpg", "back", "Setting sun")
+                };
+            }
+        </script>
+        <br />
+        <asp:DropDownList ID="addressDropDownList" runat="server" 
+            style="float:left; height: 22px;" 
+            AutoPostBack="True" onload="addressDropDownList_Load" 
+            onselectedindexchanged="addressDropDownList_SelectedIndexChanged">
+        </asp:DropDownList>
+        <asp:ObjectDataSource ID="addressObjectDataSource" runat="server" 
+            SelectMethod="GetHouseList" TypeName="BrowseHouse">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="0" Name="PropertyType" Type="String" />
+                <asp:CookieParameter CookieName="City" Name="sCity" Type="String" />
+                <asp:Parameter DefaultValue="0" Name="Price1" Type="Int32" />
+                <asp:Parameter DefaultValue="0" Name="Price2" Type="Int32" />
+                <asp:Parameter DefaultValue="0" Name="Bed" Type="Int32" />
+                <asp:Parameter DefaultValue="0" Name="Bath" Type="Int32" />
+                <asp:Parameter DefaultValue="750000" Name="MaxPrice" Type="Int32" />
+            </SelectParameters>
+        </asp:ObjectDataSource>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+        
+            <br />
+        <br />
+        
+            <asp:Image ID="homePhotos" runat="server" Height="168px" 
+            ImageUrl="~/images/details/home1/1.jpg" CssClass="flt" Width="204px">
+            </asp:Image>
+        <cc1:SlideShowExtender ID="SlideShowExtender1" runat="server" AutoPlay="True" 
+            ImageTitleLabelID="imageTitleLabelID" Loop="True" 
+            SlideShowServiceMethod="GetSlides" TargetControlID="homePhotos">
+        </cc1:SlideShowExtender>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:DetailsView ID="homeDetailList" runat="server"
+                    DataSourceID="detailsObjectDataSource" Height="50px"  
+                    Width="342px" BackColor="LightGoldenrodYellow" 
+                    BorderColor="Tan" BorderWidth="1px" CellPadding="2" 
+                    ForeColor="Black" GridLines="None" AutoGenerateRows="False" 
+                    style="margin-left: 0px">
+                    <AlternatingRowStyle BackColor="PaleGoldenrod" />
+                    <EditRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite"/>
+                    <Fields>
+                        <asp:BoundField DataField="Price" HeaderText="Price" ReadOnly="True" />
+                        <asp:BoundField DataField="Bedroom" HeaderText="Bedrooms" />
+                        <asp:BoundField DataField="Bathroom" HeaderText="Bathrooms" />
+                        <asp:BoundField DataField="HouseType" HeaderText="HouseType" />
+                        <asp:BoundField DataField="HouseStyle" HeaderText="HouseStyle" />
+                        <asp:BoundField DataField="LotSize" HeaderText="LotSize" />
+                    </Fields>
+                    <FooterStyle BackColor="Tan" />
+                    <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                    <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" 
+                        HorizontalAlign="Center" />
+                </asp:DetailsView>
+                <asp:ObjectDataSource ID="detailsObjectDataSource" runat="server" 
+                    SelectMethod="GetCompleteList" TypeName="BrowseHouse">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="addressDropDownList" Name="houseIDString" 
+                            PropertyName="SelectedValue" Type="String" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+                <asp:Label ID="lblTemp" runat="server" Font-Bold="True" ForeColor="Red"></asp:Label>
+                <asp:Label ID="lblHouseIDName" runat="server" Visible="False"></asp:Label>
+                <br />
+                <br />
+                <br />
+                <iframe ID="I1" frameborder="0" height="350" marginheight="0" marginwidth="0" 
+                    name="I1" scrolling="no" 
+                    src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=217+Holbeach+Crescent,+Waterloo,+ON,+Canada&amp;aq=1&amp;oq=217+Holbea&amp;sll=37.0625,-95.677068&amp;sspn=37.598824,86.572266&amp;ie=UTF8&amp;hq=&amp;hnear=217+Holbeach+Crescent,+Waterloo,+Ontario+N2J+4Y4,+Canada&amp;t=m&amp;z=14&amp;ll=43.488694,-80.519021&amp;output=embed" 
+                    width="425"></iframe>
+                <br />
+                <small>
+                <a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=217+Holbeach+Crescent,+Waterloo,+ON,+Canada&amp;aq=1&amp;oq=217+Holbea&amp;sll=37.0625,-95.677068&amp;sspn=37.598824,86.572266&amp;ie=UTF8&amp;hq=&amp;hnear=217+Holbeach+Crescent,+Waterloo,+Ontario+N2J+4Y4,+Canada&amp;t=m&amp;z=14&amp;ll=43.488694,-80.519021" 
+                    style="color:#0000FF;text-align:left">View Larger Map</a></small><br />
+                <br />
+                <asp:Label ID="Label3" runat="server" CssClass="flt" Font-Bold="true" 
+                    Font-Size="Large" style="text-align: left" Text="Amenities"></asp:Label>
+                    <br />
+                    <br />
+                <asp:DetailsView ID="detailList2DetailsView" runat="server" 
+                    AutoGenerateRows="False" BackColor="LightGoldenrodYellow" BorderColor="Tan" 
+                    BorderWidth="1px" CellPadding="2" DataSourceID="detailsObjectDataSource" 
+                    ForeColor="Black" GridLines="None" Height="79px" HorizontalAlign="Left" 
+                    Width="541px" style="text-align: left">
+                    <AlternatingRowStyle BackColor="PaleGoldenrod" />
+                    <EditRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                    <Fields>
+                        <asp:TemplateField>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                            </EditItemTemplate>
+                            <InsertItemTemplate>
+                                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                            </InsertItemTemplate>
+                            <ItemTemplate>
+                                <table class="style1">
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="Label1" runat="server">Refrigerator:</asp:Label>
+                                            <asp:CheckBox ID="cb1" runat="server" Checked='<%# bind("Refrigerator") %>' />
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="Label2" runat="server">Stove:</asp:Label>
+                                            <asp:CheckBox ID="cb2" runat="server" Checked='<%# bind("Stove") %>' />
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="Label3" runat="server">Dishwasher: </asp:Label>
+                                            <asp:CheckBox ID="cb3" runat="server" Checked='<%# bind("DishWasher") %>' />
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="Label4" runat="server">Watersoftner:</asp:Label>
+                                            <asp:CheckBox ID="cb4" runat="server" Checked='<%# bind("WaterSoftener") %>' />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="Label5" runat="server">Waterheater:</asp:Label>
+                                            <asp:CheckBox ID="cb5" runat="server" Checked='<%# bind("WaterHeater") %>' />
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="Label6" runat="server">CentralAC:</asp:Label>
+                                            <asp:CheckBox ID="cb6" runat="server" Checked='<%# bind("CentralAC") %>' />
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="Label7" runat="server" Text="Centralvaccum:"></asp:Label>
+                                            <asp:CheckBox ID="cb7" runat="server" Checked='<%# bind("CentralVaccum") %>' />
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="Label8" runat="server">Fireplace:</asp:Label>
+                                            <asp:CheckBox ID="cb8" runat="server" Checked='<%# bind("FirePlace") %>' />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            &nbsp;
+                                            <asp:Label ID="Label9" runat="server">Heatsystem:</asp:Label>
+                                            <asp:CheckBox ID="cb9" runat="server" Checked='<%# bind("HeatSystem") %>' />
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                            <asp:Label ID="Label10" runat="server">Swimmingpool:</asp:Label>
+                                            <asp:CheckBox ID="cb10" runat="server" Checked='<%# bind("SwimmingPool") %>' />
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                            <asp:Label ID="Label11" runat="server">Deck:</asp:Label>
+                                            <asp:CheckBox ID="cb11" runat="server" Checked='<%# bind("HeatSystem") %>' />
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                </table>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Fields>
+                    <FooterStyle BackColor="Tan" />
+                    <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                    <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" 
+                        HorizontalAlign="Center" />
+                </asp:DetailsView>
+                <br />
+                <br />
+                <asp:Button ID="goBackButton" runat="server" onclick="goBackButton_Click" 
+                    Text="Go Back" />
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </div>
+</asp:Content>
+

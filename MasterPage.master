@@ -1,0 +1,143 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<%@ Register src="HGLogon.ascx" tagname="HGLogon" tagprefix="uc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Harjit Mangat's Home</title>
+    <link id="Link1" rel="shortcut icon" type="image/x-icon" href="favicon.ico" runat="server" />
+    <link id="Link2" rel="icon" type="image/ico" href="favicon.ico" runat="server" />    
+    <link type="image/vnd.microsoft.icon" href="images/logo.jpg" rel="shortcut icon" />
+    <link href="style/jquery.hoverscroll.css" type="text/css" rel="stylesheet" />
+    <link rel="Stylesheet" type="text/css" href="style/main.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.hoverscroll.js"></script>
+    <script src="~/js/jquery-1.3.2.js" type="text/javascript"></script>
+    <script src="~/js/jquery.MultiFile.js" type="text/javascript"></script>
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    
+    <style type="text/css">
+        .style2
+        {
+            width: 20%;
+            float: left;
+        }
+    </style>
+    
+</head>
+<body>
+    <form id="form1" runat="server">
+        
+    <table id="mainContainer">
+        <tr style="background-color:#FFCC66; padding: 0; height: 279px;">
+            <td id="headContainer" colspan="2" style="background-color: #525252; padding: 0;" >
+                <a href="Default.aspx">
+                    <asp:Image ID="banner" ImageUrl="~/images/Banner.jpg" runat="server" 
+                    Height="279px" Width="100%" ImageAlign="Top" />
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #525252" class="leftCell">
+                <div style="float:left; margin-left:10px; margin-top:auto;">
+                    <uc1:HGLogon ID="HGLogon2" runat="server" />
+                </div>
+            </td>
+            <td style="background-color: #525252">
+                <asp:Menu ID="MenuItems" runat="server" BackColor="#525252" 
+                    DataSourceID="menuSiteMapDataSource" DynamicHorizontalOffset="2" 
+                    Font-Names="Verdana" Font-Size="Medium" ForeColor="#F4FA58" 
+                    Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2" 
+                    StaticSubMenuIndent="10px" Width="100%" style="margin-left: 0px">
+                    <DynamicHoverStyle BackColor="#FFCC66" ForeColor="White" />
+                    <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                    <DynamicMenuStyle BackColor="#FFFBD6" />
+                    <DynamicSelectedStyle BackColor="#FFCC66" />
+                    <StaticHoverStyle BackColor="#FFCC66" ForeColor="White" />
+                    <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                    <StaticSelectedStyle BackColor="#990000" ForeColor="White" />
+                </asp:Menu>
+                <asp:SiteMapDataSource ID="menuSiteMapDataSource" runat="server" />
+            </td>
+        </tr>
+        <tr style="background-color: #FFCC66">
+        <td valign="top" style="padding-top:25px;" class="style2">
+            <div id="socialNetwork">
+                <p align="center" 
+                        
+                    style="width: 153px; margin-top: 0px; padding-top:0px; height: 328px;">
+                    <br />
+                    <strong style="font-family: 'Times New Roman', Times, serif">
+                    <br /><strong>
+                    Harjit Mangat,CCIM<br />
+                    Broker of Record<br />
+                    </strong>
+                    <br />
+                    <br />
+
+                    <img alt="" height="15" src="images/company_logo.jpg" width="145" /> Global 
+                    Realty Partners Inc., Brokerage</strong><br />
+                    <strong>
+                    <br />
+                    151 Country Crescent<br />
+                    Kitchener, Ontario<br />
+                    N2A 2S8<br />
+                    <br />
+                    Phone: 519-836-3348<br />
+                    Fax: 519-836-8505</strong><br />
+                </p>
+            <ul style="border-style:groove; border-width:thin; background-color:#FFCC66">
+            	<li>
+                    
+    			   <a href="http://www.facebook.com/" target="_fb" style="border:0">
+			        <img border="0" src="images/facebook_logo.jpg" alt="Facebook" 
+                                        title="Facebook" 
+                        style="float:left; padding-left:10px; margin-left: 16px;" />
+			        </a>		    
+                </li>
+                <li>
+			        <a href="http://www.twitter.com/" target="_tw" style="border:0">
+					<img border="0"  src="images/twitter_logo.jpg" alt="Twitter" 
+                        title="Twitter" style="padding-left:12px"/></a></li>
+            </ul>
+                <br />
+                <br />
+                <p>
+                    &nbsp;</p>
+            </div>
+        </td> 
+        <td valign="top" style="text-align: right">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" >
+              
+            </asp:ContentPlaceHolder>
+        </td>
+        </tr>
+        <tr>
+            <td id="footerContainer" colspan="2">
+            <asp:SiteMapDataSource ID="footerMenuSiteMap" runat="server"
+                SiteMapProvider = "FooterMenu"
+                ShowStartingNode ="false"  />
+            <asp:Menu ID="footerMenu" runat="server" BackColor="#525252" 
+                    DataSourceID="footerMenuSiteMap" DynamicHorizontalOffset="2" 
+                    Font-Names="Verdana" Font-Size="Medium" ForeColor="#F4FA58" 
+                    Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2" 
+                    StaticSubMenuIndent="10px" Width="100%">
+                    <DynamicHoverStyle BackColor="#FFCC66" ForeColor="White" />
+                    <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                    <DynamicMenuStyle BackColor="#FFFBD6" />
+                    <DynamicSelectedStyle BackColor="#FFCC66" />
+                    <StaticHoverStyle BackColor="#FFCC66" ForeColor="White" />
+                    <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                    <StaticSelectedStyle BackColor="#990000" ForeColor="White" />
+            </asp:Menu>
+
+            </td>
+        </tr>
+    </table>
+        
+    </form>
+</body>
+</html>

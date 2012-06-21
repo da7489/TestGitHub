@@ -1,0 +1,251 @@
+﻿/*.curved 
+{ 
+    -moz-border-radius:10px; / Firefox / -webkit-border-radius:10px; / Safari and chrome / -khtml-border-radius:10px; / Linux browsers / border-radius:10px; / CSS3 / 
+}*/
+
+body
+{
+    margin-left: 30%;
+    background-color: #525252;
+    margin-top:2.5%;
+}
+
+#mainContainer
+{
+    margin-top: 5px;
+    background-color: #FFFBD6;
+    width: 711px;
+    height: 1014px;
+}
+
+.banner
+{
+    width: 92%;
+}
+
+.leftSide
+{
+    text-align: center;
+    background-color: #FFCC66;
+    width: 10%;
+}
+
+.menuBar
+{
+    background-color: #5033BA;
+    width: 100%;
+}
+
+.sideBar
+{
+    background-color: #FFCC66   ;
+}
+
+#headContainer
+{
+    clear: both;
+    width: 100%;
+    padding: 0;
+    height: auto;
+    background-color: #FFFBD6;
+    text-align:center;
+}
+
+.imageBorder
+{
+    height: 15px;
+    background-color: #5033BA;
+    margin: 0 0 0 0px;
+    padding: 0;
+}
+
+#newHouse
+{
+    width: 94%;
+    height: 140px;
+    margin: 0 0 0 2px;
+}
+
+#leftContainer
+{
+    float: left;
+    width: 20%;
+    height: auto;
+    background-color: #FFCC66;
+}
+
+#centerContainer
+{
+    width: 622px;
+    background-color: #FFCC66;
+    height: 148px;
+    margin-left: 0px;
+}
+
+#footerContainer
+{
+    clear: both;
+    background-color: #5033BA;
+    text-align: center;
+}
+
+.hoverscroll 
+{
+	border: #000 solid 1px;
+}
+
+#newHouse #my-list
+{
+    width: 100%;
+}
+	
+#my-list li 
+{
+	border: #000 solid 1px;
+	background-color: #112233;
+}
+
+/*NAVIGATION MENU*/
+.links
+{
+}
+
+.links ul
+{
+    list-style-type: none; 
+    padding: 0px;
+    margin: 0px;
+}
+
+.links ul li
+{
+    /*background-image: url("../images/button.jpg") no-repeat;*/
+    display: inline; 
+    float: left; 
+    font-size: 14px; 
+    margin-right: 2px;
+    padding: 4px 5px;
+    color: yellow;
+}
+
+.links a
+{
+    display: block;
+    color: yellow; 
+    text-decoration: none;
+    background: url("../images/button.jpg") no-repeat 0% 50%; 
+    padding: 4px 3px;
+}
+
+.links a:hover
+{
+    color: Orange;  
+    /*background-color: Aqua;*/
+    margin-right: 2px;
+    background: url("../images/button-dim.jpg") no-repeat 100% 50%; 
+    padding: 1px 0.2px 0 0;
+}
+
+#contentPlacer
+{
+    clear: both;
+    background-color: ActiveBorder;
+    margin-top: 10px;
+    /*border-radius: 10px;*/
+    padding: 10px;
+    height: 434px;
+    margin-left: 2px;
+    margin-bottom: 10px;
+}
+
+.emptyContainer
+{
+    height: 10px;
+}
+
+.estateContainer
+{
+    width: 29.5%;
+    background-color: #FFFBD6;
+    float: left;
+    height: 100%;
+}
+
+#leftContent
+{
+    border-right: 1px solid white;
+    text-align: center;
+    border: 1px solid blue;
+}
+
+#rentContainer
+{
+    /**/
+}
+
+.contentHeader
+{
+    width: 90%;
+    margin-left: 10px;
+    text-align: right;
+  /*  border-bottom: 5px dotted black;*/
+ }
+
+.houseList
+{
+    list-style-type: none;
+}
+
+.loginBox
+{
+    border: 1px dashed blue;
+    background-color: White;
+    width: 80%;
+}
+
+
+#socialNetwork ul
+{
+	list-style-type: none;
+    width: 150px;
+    padding: 0;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    vertical-align: middle;
+    /*background-color: ;*/
+}
+
+#socialNetwork ul li
+{
+	display: inline;
+}
+
+.leftCell
+{
+    width: 22.5%;
+    
+}
+
+#mySlideShow
+{
+    text-align: left;
+}
+
+.flt
+{
+    float: left;
+}
+
+.padding
+{
+    padding-left:13px;
+    padding-right:5px;
+    float:left;
+}
+
+.style10
+{
+    padding-left:20px;
+    /*background-color:#FFFBD6;*/
+}

@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class admin_ModifiyListing : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void listingGridView_DataBound(object sender, EventArgs e)
+    {
+        if (listingGridView.Rows.Count > 0)
+        {
+            listingGridView.SelectedIndex = 0;
+        }
+        else
+            listingGridView.SelectedIndex = -1;
+    }
+    protected void listingObjectDataSource_Selected(object sender, ObjectDataSourceStatusEventArgs e)
+    {
+        if (e.Exception != null)
+        {
+            e.ExceptionHandled = true;
+            if (e.Exception.InnerException != null)
+                lblMessage.Text = e.Exception.InnerException.Message;
+            else
+                lblMessage.Text = e.Exception.Message;
+        }
+    }
+    protected void listingDetailsView_ItemUpdated(object sender, DetailsViewUpdatedEventArgs e)
+    {
+        if (e.Exception != null)
+        {
+            e.ExceptionHandled = true;
+            e.KeepInEditMode = true;
+            if (e.Exception.InnerException != null)
+                lblMessage.Text = e.Exception.InnerException.Message.Replace(";;", "<br />");
+            else
+                lblMessage.Text = e.Exception.Message.Replace(";;", "<br />"); ;
+        }
+    }
+    protected void listingDetailsView_ItemUpdating(object sender, DetailsViewUpdateEventArgs e)
+    {
+
+    }
+    protected void listingGridView_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        listingDetailsView.DataBind();
+    }
+}

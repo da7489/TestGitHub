@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+//using ListingInfoDBModel;
+
+/// <summary>
+/// Summary description for DAL
+/// </summary>
+public class DAL
+{
+	public DAL()
+	{
+		
+	}
+
+    //public List<tbl_HouseInfo> getRecentListing()
+    //{
+    //    List<tbl_HouseInfo> result = new List<tbl_HouseInfo>();
+    //    ListingInfoDBEntities entity = new ListingInfoDBEntities();
+    //    var resultset = entity.tbl_HouseInfo.OrderByDescending(u => u.HouseID).Take(10);
+    //    foreach (tbl_HouseInfo houseInfo in resultset)
+    //    {
+    //        result.Add(houseInfo);
+    //    }
+    //    return result;
+    //}
+}
